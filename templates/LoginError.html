@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>ERROR</title>
+</head>
+<body>
+
+{% if error %}
+<script>
+    alert("你还未登录！\n即将跳转到登录页！")
+    location.href = '/login'
+</script>
+{% endif %}
+
+</body>
+</html>
