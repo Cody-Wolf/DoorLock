@@ -40,18 +40,18 @@ def del_device(id, d):
         return True
     return False
 
+
 def find_user(id):
     ret = collection.find_one({'_id': id})
     return ret
 
 
-def creat_user(id,password):
+def creat_user(id, password):
     if find_user(id):
         return False
-    ls=[]
-    collection.insert_one({'_id':id,'password':password,'list':ls})
+    ls = []
+    collection.insert_one({'_id': id, 'password': password, 'list': ls})
     return True
-
 
 
 def password_check(id, password):
