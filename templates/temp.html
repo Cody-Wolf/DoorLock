@@ -6,8 +6,13 @@
 </head>
 <body>
 <h2>用户：{{username}}</h2>
-{ % for id in device %}
-    设备【{{id}}】 <button type=submit name="signup" val="signup">注册</button><br>
-{ % endfor % }
+
+{% for id in device %}
+    <form method="post">
+        设备【id {{id}}】
+        <button type=submit name="device" value={{id}}>{{id}}管理</button>
+    </form>
+{% endfor %}
+{{msg}}
 </body>
 </html>

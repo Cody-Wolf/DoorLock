@@ -12,12 +12,12 @@ app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=2)  # 生成过期日�
 def Login():
     if request.method == 'GET':
         return render_template('login.html')
-    user = request.form.get('user')
+    id = request.form.get('user')
     pwd = request.form.get('pwd')
     islogin = request.form.get('login')
-    print(user, pwd, islogin)
+    print(id, pwd, islogin)
     if islogin is not None:
-        if db.password_check(user, pwd):
+        if db.password_check(db.User(Id=id, Pwd=pwd)):
             session['username'] = user
             return redirect('/')
         else:
@@ -30,12 +30,12 @@ def Login():
             return render_template('login.html', sign_msg='用户已被注册！')
 
 
-@app.route('/new', methods=['GET', "POST"])
+@app.route('/new')
 def IndexNew():
     return render_template('index.html')
 
 
-@app.route('/', methods=['GET', "POST"])
+@app.route('/')
 def Index():
     username = session.get('username')
     if username:
@@ -55,12 +55,16 @@ def LoginError():
     return render_template('LoginError.html', error=1)
 
 
-@app.route('/test')
+@app.route('/test', methods=['GET', "POST"])
 def Test():
     username = session.get('username')
     if not username:
         return LoginError()
-    return render_template('temp.html', username = username)
+    device = [1, 1, 4, 5, 1, 4]
+    if request.method == 'POST':
+        val = request.form.get('device')
+        msg = "你选择了设备：" + str(val)
+    return render_template('temp.html', **locals())
 
 
 if __name__ == "__main__":
