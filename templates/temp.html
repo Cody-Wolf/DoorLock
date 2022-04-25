@@ -5,23 +5,9 @@
     <title>设备管理</title>
 </head>
 <body>
-1145141919810
-<table border="1px">
-    <thead>
-        <tr>
-            <th>设备名</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for foo in stu %}
-            <tr>
-                <td>{{ foo.name }}</td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
-{% for i in range(times) %}
-    <button type=submit name="login">登录</button>
-{% endfor %}
+<h2>用户：{{username}}</h2>
+{ % for id in device %}
+    设备【{{id}}】 <button type=submit name="signup" val="signup">注册</button><br>
+{ % endfor % }
 </body>
 </html>
