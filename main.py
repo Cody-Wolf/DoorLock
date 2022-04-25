@@ -57,10 +57,10 @@ def LoginError():
 
 @app.route('/test')
 def Test():
-    name = session.get('username')
-    if not name:
+    username = session.get('username')
+    if not username:
         return LoginError()
-    return render_template('temp.html')
+    return render_template('temp.html', username = username)
 
 
 if __name__ == "__main__":
