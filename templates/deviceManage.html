@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>DoorLock - 设备管理</title>
+</head>
+<body>
+<h1>用户：{{username}}</h1>
+<h3>你有下列设备</h3>
+{% if device_count== 0 %}
+    你还没有设备哦
+{% endif %}
+{% for id in device %}
+    <form method="post">
+        设备【id {{id.name}}】
+        <button type=submit name="manage" value={{id.name}}>选择此设备</button>
+        <button type=submit name="delete" value={{id.name}}>删除此设备</button>
+    </form>
+{% endfor %}
+<hr >
+<h3>添加新的设备</h3>
+<form method="post">
+    <input type="text" name="new" placeholder="设备号">
+    <button type=submit>添加</button>
+</form>
+
+<br>【{{msg}}】
+</body>
+</html>

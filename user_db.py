@@ -10,6 +10,9 @@ class Device:
     def __init__(self, Name):
         self.name = Name
 
+    def __eq__(self, y):
+        return self.name == y.name
+
 
 def encode_Device(device):
     return {'type': 'Device', 'name': device.name}
@@ -20,7 +23,7 @@ def decode_Device(document):
 
 
 class User:
-    def __init__(self, Name, Pwd, Uid=None, Dls=None, Eml=None, Phe=None):
+    def __init__(self, Name, Pwd, Dls=None, Eml=None, Phe=None, Uid=None):
         self.name = Name
         self.password = Pwd
         if Dls:
@@ -43,7 +46,7 @@ def decode_User(doc):
 
 def find_user(name):
     ret = collection.find_one({'_name': name})
-    if ret == None:
+    if ret is None:
         return None
     return decode_User(ret)
 
