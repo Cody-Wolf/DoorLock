@@ -7,8 +7,6 @@ collection = db['user1']
 
 
 class Device:
-    id
-
     def __init__(self, iid):
         self.id = iid
 
